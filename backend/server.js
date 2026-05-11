@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const START_PORT = Number(process.env.PORT || process.env.APP_PORT || 3000);
+const START_PORT = Number(process.env.APP_PORT || 3000);
 
 (async () => {
   try {

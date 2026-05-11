@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Archived Employees - Manager Time Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero card">
+      <div>
+        <p class="eyebrow">Archived employees</p>
+        <h1>Employee Archive</h1>
+        <p class="hero-copy">Archived employees stay out of the live roster, while their session history remains preserved. Archived records auto-delete after 30 days unless you restore or delete them sooner.</p>
+      </div>
+
+      <div class="row small" style="justify-content: flex-end; margin-top: 1rem;">
+        <button type="button" class="ghost" onclick="window.location.href='index.html'">Back to Dashboard</button>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Archive</p>
+          <h2>Manage archived employees</h2>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Employee</th>
+            <th>Archived On</th>
+            <th>Sessions</th>
+            <th>Last Session</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="archivedBody">
+          <tr><td colspan="5" class="muted">No archived employees yet.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <script type="module">
+    import { initArchivedModule } from './archived-module.mjs';
+    initArchivedModule({ apiBase: window.API_BASE || window.location.origin });
+  </script>
+</body>
+</html>

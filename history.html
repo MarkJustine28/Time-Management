@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>History - Manager Time Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero card">
+      <div>
+        <p class="eyebrow">Session history</p>
+        <h1>Recent Completed Sessions</h1>
+        <p class="hero-copy">View completed time-in and time-out records across all days from MySQL.</p>
+      </div>
+
+      <div class="row small" style="justify-content: flex-end; margin-top: 1rem;">
+        <button type="button" class="ghost" onclick="window.location.href='index.html'">Back to Dashboard</button>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">History</p>
+          <h2>Recent completed sessions</h2>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Employee</th>
+            <th>Date</th>
+            <th>Time In</th>
+            <th>Time Out</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody id="historyBody">
+          <tr><td colspan="5" class="muted">No history yet.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <script type="module">
+    import { initHistoryModule } from './history-module.mjs';
+    initHistoryModule({ apiBase: window.API_BASE || window.location.origin });
+  </script>
+</body>
+</html>

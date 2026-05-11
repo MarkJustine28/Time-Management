@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Manager Time Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero card">
+      <div>
+        <p class="eyebrow">Manager dashboard</p>
+        <h1>Team Time Management</h1>
+        <p class="hero-copy">One manager can maintain a roster, clock employees in and out, and review every session for the day.</p>
+      </div>
+
+      <div class="summary-grid">
+        <div class="summary-card">
+          <span class="summary-label">Employees</span>
+          <strong id="employeeCount">0</strong>
+        </div>
+        <div class="summary-card">
+          <span class="summary-label">Active now</span>
+          <strong id="activeCount">0</strong>
+        </div>
+        <div class="summary-card">
+          <span class="summary-label">Sessions today</span>
+          <strong id="sessionCount">0</strong>
+        </div>
+        <div class="summary-card">
+          <span class="summary-label">Total hours</span>
+          <strong id="totalHours">0h 0m</strong>
+        </div>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Roster</p>
+          <h2>Add employees to the manager list</h2>
+        </div>
+        <div class="row small">
+          <button id="exportBtn" type="button" class="ghost">Export CSV</button>
+          <button id="historyBtn" type="button" class="ghost">History</button>
+          <button id="archivedBtn" type="button" class="ghost">Archived</button>
+          <button id="resetBtn" type="button" class="ghost">Reset Today</button>
+        </div>
+      </div>
+
+      <div class="row add-row">
+        <label for="employeeName">Employee name</label>
+        <input id="employeeName" type="text" placeholder="e.g., Juan Dela Cruz" autocomplete="name" />
+        <button id="addEmployeeBtn" type="button" class="primary">Add & Time In</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Live status</p>
+          <h2>Current employee states</h2>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Employee</th>
+            <th>Status</th>
+            <th>Time In</th>
+            <th>Time Out</th>
+            <th>Duration</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="rosterBody">
+          <tr><td colspan="6" class="muted">No employees added yet.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Sessions</p>
+          <h2>Today’s records</h2>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Employee</th>
+            <th>Time In</th>
+            <th>Time Out</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody id="sessionsBody">
+          <tr><td colspan="4" class="muted">No sessions yet.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <p class="note">Data is stored in MySQL through the backend API. Keep the server running so the roster and today’s clock-in records stay in sync.</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

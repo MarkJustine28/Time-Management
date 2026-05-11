@@ -5,7 +5,7 @@ const dbHost = process.env.DB_HOST || process.env.MYSQLHOST || 'localhost';
 const dbPort = Number(process.env.DB_PORT || process.env.MYSQLPORT || 3306);
 const dbUser = process.env.DB_USER || process.env.MYSQLUSER || 'root';
 const dbPassword = process.env.DB_PASS || process.env.MYSQLPASSWORD || '';
-const dbName = process.env.DB_NAME || process.env.MYSQLDATABASE || 'timemanagement';
+const dbName = process.env.DB_NAME || process.env.MYSQL_DATABASE || 'timemanagement';
 
 const pool = mysql.createPool({
   host: dbHost,
@@ -14,8 +14,12 @@ const pool = mysql.createPool({
   password: dbPassword,
   database: dbName,
   waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
+  connectionLimit: 5,
+  queueLimit: 0,
+  enableKeepAlive: true,
+  keepAliveInitialDelayMs: 30000,
+  connectionTimeoutMillis: 10000,
+  acquireTimeoutMillis: 10000
 });
 
 async function columnExists(tableName, columnName) {
